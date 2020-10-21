@@ -4,9 +4,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace TTCNTT.Model.Models
 {
     [Table("Footers")]
-    internal class Footer
+    public class Footer
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string ID { set; get; }
 
         [Required]

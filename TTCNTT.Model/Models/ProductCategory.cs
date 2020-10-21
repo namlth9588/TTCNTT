@@ -5,11 +5,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TTCNTT.Model.Abstract;
 
 namespace TTCNTT.Model.Models
 {
-    [Table("Menus")]
-    public class Menu
+    [Table("ProductCategories")]
+    public class ProductCategory : Auditable
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -17,15 +18,13 @@ namespace TTCNTT.Model.Models
         [Required]
         public string Name { set; get; }
         [Required]
-        public string URL { set; get; }
-        [Required]
+        public string Alias { set; get; }
+        public string Description { set; get; }
+        public int? ParentID { set; get; }
         public int? DisplayOrder { set; get; }
-        [Required]
-        public int GroupID { set; get;}
-        
-        [ForeignKey("GroupID")]
-        public virtual MenuGroup MenuGroup { set; get; }
-        public string Target { set; get; } 
-        public bool Status { set; get; }
+        public string Image { set; get; }
+        public bool? HomeFlag { set; get; }
+        public virtual IEnumerable<Product> Products { set; get; }
+
     }
 }
